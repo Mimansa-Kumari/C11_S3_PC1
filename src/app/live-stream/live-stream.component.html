@@ -1,0 +1,106 @@
+<p>
+  <mat-toolbar class="mat-toolbar" color="primary">
+    <mat-toolbar-row>
+      <span>View Tube - Live Stream Event Form</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</p>
+
+
+<div class="container">
+  <form class="form" [formGroup]="liveStream" (ngSubmit)="onSubmit()">
+    <fieldset class="backcolor">
+      <!-- -------------------------Input Text------------------------- -->
+      <mat-form-field appearance="fill" class="mat-form-field1">
+        <input matInput placeholder="Add Title" type="text" id="addTitle" formControlName="eventTitle" />
+        <mat-error *ngIf="eventTitle?.errors?.['required']">
+          <p>Add Title is required.</p>
+        </mat-error>
+        <mat-error *ngIf="eventTitle?.errors?.['maxLength']">
+          <p>Minimum Length is 5.</p>
+        </mat-error>
+      </mat-form-field><br>
+
+      <!-- -------------------------From Date------------------------- -->
+      <mat-form-field appearance="fill" class="mat-form-field2">
+        <input matInput [matDatepicker]="picker" id="picker" formControlName="startDate" placeholder="From Date"
+          [min]="startDateValue">
+        <mat-error *ngIf="startDate?.errors?.['required']">
+          <p>Starting Date is required.</p>
+        </mat-error>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+
+      <!-- -------------------------From Time------------------------- -->
+      <mat-form-field class="example-full-width" appearance="fill" class="mat-form-field3">
+        <input type="text" placeholder="From Time" aria-label="Number" matInput id="f-time" formControlName="startTime"
+          [matAutocomplete]="auto">
+        <mat-error *ngIf="startTime?.errors?.['required']">
+          <p>Starting Time is required.</p>
+        </mat-error>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of time" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+
+      <!-- -------------------------To Time------------------------- -->
+      <mat-form-field class="example-full-width" appearance="fill" class="mat-form-field3">
+        <input type="text" placeholder="To Time" aria-label="Number" matInput id="t-time" formControlName="endTime"
+          [matAutocomplete]="auto">
+        <mat-error *ngIf="endTime?.errors?.['required']">
+          <p>Ending Time is required.</p>
+        </mat-error>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of time" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <!-- -------------------------To Date------------------------- -->
+      <mat-form-field appearance="fill" class="mat-form-field2">
+        <input matInput [matDatepicker]="picker2" id="picker2" formControlName="endDate" placeholder="To Date"
+          [min]="endDateValue">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error *ngIf="endDate?.errors?.['required']">
+          <p>Ending Date is required.</p>
+        </mat-error>
+      </mat-form-field><br>
+
+
+
+      <!-- -------------------------TextArea------------------------- -->
+
+      <textarea name="" id="text" cols="30" rows="10" formControlName="textArea"></textarea>
+      <div>
+        <textarea id="text2" cols="40" rows="6" formControlName="textArea2"></textarea>
+      <mat-error *ngIf="textArea2?.errors?.['checkIfGuestEmailsAreValid']==false">
+        <p>Please enter a valid email id</p>
+      </mat-error>
+      <mat-error *ngIf="textArea2?.errors?.['checkIfGuestEmailsAreValid']==null">
+
+        <!-- -------------------------Mat-chip-list------------------------- -->
+        <div *ngFor="let option of guestList" style="margin-left: 20px;">
+          <mat-chip color="accent" id="chip">
+            {{option}}
+          </mat-chip>
+        </div>
+      </mat-error><br>
+      </div>
+      
+
+      <button type="submit" id="btn" [disabled]="!liveStream.valid">Submit</button>
+      
+
+    </fieldset>
+  </form>
+</div>

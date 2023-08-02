@@ -1,0 +1,79 @@
+.mat-toolbar {
+    background-color: rgb(243, 106, 134);
+}
+
+.mat-toolbar span {
+    font-size: 29px;
+}
+
+.container {
+    margin-top: -15px;
+    height: 100%;
+    background-color: black;
+}
+
+p {
+    color: red;
+}
+
+.mat-form-field1 {
+    width: 60%;
+    color: white;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.mat-form-field2 {
+    width: 15%;
+    margin: 30px;
+    color: white;
+}
+
+.mat-form-field3 {
+    width: 15%;
+    margin: 30px;
+    color: white;
+    position: relative;
+    top: 40px;
+}
+
+#f-time,
+#t-time {
+    padding: 20px;
+}
+
+#text {
+    width: 500px;
+    height: 240px;
+    color: white;
+    margin-left: 30px;
+    float: left;
+    background-color: rgb(28, 28, 28);
+}
+
+#btn {
+    color: white;
+    margin: 10px 30px 45px 30px;
+    padding: 12px 16px;
+    border-radius: 5px;
+    background-color: palevioletred;
+}
+
+#text2 {
+    color: white;
+    margin-left: 30px;
+    background-color: rgb(28, 28, 28);
+}
+#chip
+{
+    float: left;
+    padding: 3px 5px;
+    margin-left: 25px;
+    border-radius: 5px;
+}
+#chip::after
+{
+  content: "";
+  clear: both;
+  display: table;
+}
